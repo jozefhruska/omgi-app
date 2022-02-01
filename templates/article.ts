@@ -1,6 +1,7 @@
 import { NextApiRequest } from 'next/dist/shared/lib/utils';
 import { z } from 'zod';
 import { truncate } from '../helpers/text';
+import { DEPLOYMENT_URL } from '../helpers/constants';
 
 export const articleTemplateValidationSchema = z.object({
   heading: z.string(),
@@ -38,26 +39,18 @@ export const getArticleTemplateHtml = (query: NextApiRequest['query']) => {
           font-family: 'Lato';
           font-style: normal;
           font-weight: 400;
-          src: local(''), url('${
-            process.env.NEXT_PUBLIC_VERCEL_URL
-          }/fonts/lato-v22-latin-regular.woff2') format('woff2'),
+          src: local(''), url('${DEPLOYMENT_URL}/fonts/lato-v22-latin-regular.woff2') format('woff2'),
             /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('${
-                process.env.NEXT_PUBLIC_VERCEL_URL
-              }/fonts/lato-v22-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+              url('${DEPLOYMENT_URL}/fonts/lato-v22-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
         /* lato-900 - latin */
         @font-face {
           font-family: 'Lato';
           font-style: normal;
           font-weight: 900;
-          src: local(''), url('${
-            process.env.NEXT_PUBLIC_VERCEL_URL
-          }/fonts/lato-v22-latin-900.woff2') format('woff2'),
+          src: local(''), url('${DEPLOYMENT_URL}/fonts/lato-v22-latin-900.woff2') format('woff2'),
             /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('${
-                process.env.NEXT_PUBLIC_VERCEL_URL
-              }/fonts/lato-v22-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+              url('${DEPLOYMENT_URL}/fonts/lato-v22-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
 
         body {
