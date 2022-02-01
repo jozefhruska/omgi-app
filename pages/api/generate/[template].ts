@@ -1,8 +1,8 @@
 import type { NextApiHandler } from 'next';
-import { getScreenshot } from '../../../helpers/images';
 import { ZodError } from 'zod';
+import { getScreenshot } from '../../../helpers/images';
 import { TemplateKey } from '../../../templates';
-import { getArticleTemplateHtml } from '../../../templates/article/article';
+import { getArticleTemplateHtml } from '../../../templates/article';
 
 const GenerateApiHandler: NextApiHandler = async (req, res) => {
   try {
