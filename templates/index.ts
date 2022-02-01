@@ -1,4 +1,7 @@
-import { ArticleTemplateParams, parseArticleTemplateParams } from './article';
+import {
+  ArticleTemplateParams,
+  parseArticleTemplateParams,
+} from './article/article';
 import { NextApiRequest } from 'next';
 
 export enum TemplateKey {

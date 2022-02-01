@@ -1,5 +1,6 @@
 import { NextApiRequest } from 'next/dist/shared/lib/utils';
 import { z } from 'zod';
+import { truncate } from '../helpers/text';
 
 export const articleTemplateValidationSchema = z.object({
   heading: z.string(),
@@ -37,28 +38,43 @@ export const getArticleTemplateHtml = (query: NextApiRequest['query']) => {
           font-family: 'Lato';
           font-style: normal;
           font-weight: 400;
-          src: local(''), url('/fonts/lato-v22-latin-regular.woff2') format('woff2'),
+          src: local(''), url('${
+            process.env.NEXT_PUBLIC_VERCEL_URL
+          }/fonts/lato-v22-latin-regular.woff2') format('woff2'),
             /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('/fonts/lato-v22-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+              url('${
+                process.env.NEXT_PUBLIC_VERCEL_URL
+              }/fonts/lato-v22-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
         /* lato-900 - latin */
         @font-face {
           font-family: 'Lato';
           font-style: normal;
           font-weight: 900;
-          src: local(''), url('/fonts/lato-v22-latin-900.woff2') format('woff2'),
+          src: local(''), url('${
+            process.env.NEXT_PUBLIC_VERCEL_URL
+          }/fonts/lato-v22-latin-900.woff2') format('woff2'),
             /* Chrome 26+, Opera 23+, Firefox 39+ */
-              url('/fonts/lato-v22-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+              url('${
+                process.env.NEXT_PUBLIC_VERCEL_URL
+              }/fonts/lato-v22-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
-    
-        html,
+
         body {
+          padding: 0;
+          margin: 0;
+          height: 100vh;
+          font-family: 'Lato', sans-serif;
+        }
+        
+        .wrapper {
           display: flex;
           flex-direction: column;
           align-items: start;
-          padding: 2rem;
-          margin: 0;
-          font-family: 'Lato', sans-serif;
+          justify-content: space-between;
+          height: 100vh;
+          padding: 4rem 4rem 5rem;
+          box-sizing: border-box;
         }
     
         h1 {
@@ -125,20 +141,29 @@ export const getArticleTemplateHtml = (query: NextApiRequest['query']) => {
       </style>
     
       <body>
-        <h1>${heading}</h1>
-        <p>${description}</p>
-        <div class="metaWrapper">
-          <div class="authorWrapper">
-            <img
-              src="${authorAvatarUrl}"
-              class="authorImage"
-              alt="author image"
-            />
-            <span class="authorName">${authorName}</span>
+        <div class="wrapper">
+          <div>
+            <h1>${truncate({ content: heading, length: 56 })}</h1>
+            <p>${truncate({ content: description, length: 192 })}</p>
           </div>
-          <div class="meta">${meta}</div>
+  
+          <div class="metaWrapper">
+            <div class="authorWrapper">
+              <img
+                src="${authorAvatarUrl}"
+                class="authorImage"
+                alt="author image"
+              />
+              <span class="authorName">${truncate({
+                content: authorName,
+                length: 32,
+              })}</span>
+            </div>
+            <div class="meta">${truncate({ content: meta, length: 36 })}</div>
+          </div>
+  
+          <div class="line" />
         </div>
-        <div class="line" />
       </body>
     </html>
   `;
