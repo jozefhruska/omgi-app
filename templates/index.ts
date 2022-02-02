@@ -1,19 +1,27 @@
-import { ArticleTemplateParams, parseArticleTemplateParams } from './article';
-import { NextApiRequest } from 'next';
-
 export enum TemplateKey {
   Article = 'article',
 }
 
-export type TemplateParams = ArticleTemplateParams;
-
-export type TemplateParamsParseFunction = (
-  query: NextApiRequest['query']
-) => TemplateParams;
-
-export const templateParamsParseFunctionMap: Record<
-  TemplateKey,
-  TemplateParamsParseFunction
-> = {
-  [TemplateKey.Article]: parseArticleTemplateParams,
+type WithTemplateWrapperProps = {
+  template: string;
+  styles: string;
 };
+
+export const withTemplateWrapper = ({
+  template,
+  styles,
+}: WithTemplateWrapperProps): string => `
+  <!DOCTYPE html>
+  <html>
+      <head>
+      <meta charset="utf-8" />
+      <title>Generated Image</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      ${styles}
+    </head>
+
+    <body>
+      ${template}
+    </body>
+  </html>
+`;
