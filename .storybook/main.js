@@ -19,6 +19,11 @@ module.exports = {
         postcssLoaderOptions: {
           implementation: require('postcss'),
         },
+        cssLoaderOptions: {
+          modules: {
+            auto: true,
+          },
+        },
       },
     },
   ],
