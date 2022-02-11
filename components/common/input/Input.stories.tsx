@@ -9,8 +9,8 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
-    children: {
-      control: { type: 'placeholder' },
+    hasError: {
+      control: { type: 'boolean' },
     },
   },
 } as ComponentMeta<typeof Input>;
