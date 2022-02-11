@@ -1,0 +1,19 @@
+.main {
+  @apply rounded-md px-4 py-2.5 outline outline-1 outline-gray-300;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    @apply outline-2 outline-green-500;
+  }
+
+  &.invalid {
+    @apply text-red-800 outline-1 outline-red-500;
+
+    &:focus {
+      @apply outline-2;
+    }
+  }
+}
