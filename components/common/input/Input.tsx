@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import styles from './Input.module.css';
 
-type InputProps = { hasError: boolean } & Omit<
+type InputProps = { hasError?: boolean } & Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'children'
 >;
