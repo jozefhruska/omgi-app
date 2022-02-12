@@ -22,7 +22,11 @@ export const Input = ({
       name={name}
       id={id}
       placeholder={placeholder}
-      className={clsx(styles.main, hasError && styles.invalid, className)}
+      className={clsx(
+        styles.main,
+        { [styles.invalid]: hasError },
+        className
+      )}
     />
   );
 };
