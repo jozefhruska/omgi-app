@@ -1,0 +1,16 @@
+.main {
+  appearance: none;
+  @apply h-4 w-4 rounded-full border-2 border-gray-300;
+
+  &:checked {
+    @apply border-4 border-green-500;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    @apply ring-2 ring-green-500 ring-offset-2;
+  }
+}
