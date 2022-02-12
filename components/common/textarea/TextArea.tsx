@@ -12,16 +12,16 @@ export const TextArea = ({
   className,
   ...props
 }: TextAreaProps) => {
-  const { rows, name, id, placeholder, ...rest } = props;
-
   return (
     <textarea
-      {...rest}
-      name={name}
-      id={id}
-      rows={rows}
-      placeholder={placeholder}
-      className={clsx(styles.main, hasError && styles.invalid, className)}
+      {...props}
+      className={clsx(
+        styles.main,
+        {
+          [styles.invalid]: hasError,
+        },
+        className
+      )}
     />
   );
 };
