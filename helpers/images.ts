@@ -59,6 +59,6 @@ export const getScreenshot = async (html: string) => {
   return await page.screenshot({
     type: 'jpeg',
     fullPage: false,
-    quality: 75,
+    quality: 85,
   });
 };

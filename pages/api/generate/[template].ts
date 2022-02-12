@@ -3,6 +3,7 @@ import { ZodError } from 'zod';
 import { getScreenshot } from '../../../helpers/images';
 import { TemplateKey } from '../../../templates';
 import { getArticleTemplateHtml } from '../../../templates/article';
+import { getBasicTemplateHtml } from '../../../templates/basic';
 
 const GenerateApiHandler: NextApiHandler = async (req, res) => {
   try {
@@ -15,6 +16,11 @@ const GenerateApiHandler: NextApiHandler = async (req, res) => {
     switch (req.query.template) {
       case TemplateKey.Article: {
         html = getArticleTemplateHtml(req.query);
+        break;
+      }
+
+      case TemplateKey.Basic: {
+        html = getBasicTemplateHtml(req.query);
         break;
       }
 
