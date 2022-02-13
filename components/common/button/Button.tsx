@@ -3,44 +3,43 @@ import clsx from 'clsx';
 
 import styles from './Button.module.css';
 
-type ButtonAnchorProps = {
-  as: 'a';
-} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'children'>;
+type ButtonKind = 'primary' | 'secondary';
 
-type ButtonButtonProps = {
+type ButtonAsAnchorProps = {
+  as?: 'a';
+  type?: never;
+} & Pick<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  'className' | 'href' | 'rel' | 'target'
+>;
+
+type ButtonAsButtonProps = {
   as?: 'button';
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+} & Pick<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'className' | 'disabled' | 'type'
+>;
 
-type ButtonProps = { kind?: 'primary' | 'secondary'; children: string } & (
-  | ButtonButtonProps
-  | ButtonAnchorProps
-);
+type ButtonCommonProps = {
+  kind?: ButtonKind;
+  children: string;
+};
+
+type ButtonProps = ButtonCommonProps &
+  (ButtonAsAnchorProps | ButtonAsButtonProps);
 
 export const Button = ({
+  as: Element = 'button',
   kind = 'primary',
   children,
   className,
   ...props
-}: ButtonProps) => {
-  if (props.as === 'a') {
-    const { as, ...rest } = props;
-
-    return (
-      <a {...rest} className={clsx(styles.main, styles[kind], className)}>
-        {children}
-      </a>
-    );
-  }
-
-  const { as, type = 'button', ...rest } = props;
-
-  return (
-    <button
-      {...rest}
-      type={type}
-      className={clsx(styles.main, styles[kind], className)}
-    >
-      {children}
-    </button>
-  );
-};
+}: ButtonProps) => (
+  <Element
+    {...props}
+    type={props.type ?? 'button'}
+    className={clsx(styles.main, styles[kind], className)}
+  >
+    {children}
+  </Element>
+);
