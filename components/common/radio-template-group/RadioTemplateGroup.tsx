@@ -8,7 +8,7 @@ import styles from './RadioTemplateGroup.module.css';
 export type TemplateItem = {
   id: number;
   value: string;
-  img: string;
+  imgUrl: string;
 };
 
 type RadioTemplateGroupProps = {
@@ -45,7 +45,7 @@ export const RadioTemplateGroup = ({
                   )}
                   aria-hidden="true"
                   style={{
-                    backgroundImage: `url(${templateItem.img})`,
+                    backgroundImage: `url(${templateItem.imgUrl})`,
                   }}
                 />
                 <CheckCircleIcon

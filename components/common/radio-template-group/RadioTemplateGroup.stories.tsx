@@ -6,12 +6,14 @@ const TEMPLATES: TemplateItem[] = [
   {
     id: 1,
     value: 'default',
-    img: 'https://png.clipart.me/previews/ab0/gamepad-icon-psd-45766.jpg',
+    imgUrl:
+      'https://png.clipart.me/previews/ab0/gamepad-icon-psd-45766.jpg',
   },
   {
     id: 2,
     value: 'article',
-    img: 'https://png.clipart.me/previews/ab0/gamepad-icon-psd-45766.jpg',
+    imgUrl:
+      'https://png.clipart.me/previews/ab0/gamepad-icon-psd-45766.jpg',
   },
 ];
 
