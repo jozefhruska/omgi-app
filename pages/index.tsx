@@ -1,3 +1,12 @@
-export default function Home() {
-  return <h1 className="text-4xl">Home</h1>;
-}
+import { NextPage } from 'next';
+import { HeroSection } from '../components/homepage/hero-section/HeroSection';
+
+const Homepage: NextPage = () => {
+  return (
+    <main>
+      <HeroSection />
+    </main>
+  );
+};
+
+export default Homepage;

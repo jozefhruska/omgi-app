@@ -1,0 +1,43 @@
+.wrapper {
+  @apply mx-auto mt-16 max-w-7xl px-4;
+
+  @screen sm {
+    @apply mt-24;
+  }
+}
+
+.heading {
+  @apply text-4xl font-extrabold tracking-tight text-gray-900;
+
+  @screen sm {
+    @apply text-5xl;
+  }
+
+  @screen md {
+    @apply text-6xl;
+  }
+}
+
+.description {
+  @apply mx-auto mt-3 max-w-md text-base text-gray-700;
+
+  @screen sm {
+    @apply text-lg;
+  }
+
+  @screen md {
+    @apply mt-7 max-w-3xl text-xl;
+  }
+}
+
+.buttonWrapper {
+  @apply mx-auto mt-5 max-w-md;
+
+  @screen sm {
+    @apply flex justify-center;
+  }
+
+  @screen md {
+    @apply mt-8;
+  }
+}
