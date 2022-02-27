@@ -1,6 +1,7 @@
 .main {
-  appearance: none;
   @apply h-4 w-4 rounded-full border-2 border-gray-300;
+  appearance: none;
+  cursor: pointer;
 
   &:checked {
     @apply border-4 border-green-500;
