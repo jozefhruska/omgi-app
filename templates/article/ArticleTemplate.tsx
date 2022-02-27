@@ -17,7 +17,11 @@ export const ArticleTemplate = ({
     <div className="metaWrapper">
       <div className="authorWrapper">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={authorAvatarUrl} className="authorImage" alt="author image" />
+        <img
+          src={authorAvatarUrl}
+          className="authorImage"
+          alt="author image"
+        />
         <span className="authorName">
           {truncate({
             content: authorName,
