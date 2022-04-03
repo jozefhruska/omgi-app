@@ -48,6 +48,7 @@ export const basicTemplateStyles = `
     }
 
     h1 {
+      width: 100%;
       margin: 0 0 2rem;
       font-size: 52pt;
       font-weight: 900;

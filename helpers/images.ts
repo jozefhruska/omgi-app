@@ -8,18 +8,19 @@ const getPage = async (): Promise<core.Page> => {
     return _page;
   }
 
-  const options = !process.env.VERCEL
-    ? {
-        args: [],
-        executablePath:
-          '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-        headless: true,
-      }
-    : {
-        args: chrome.args,
-        executablePath: await chrome.executablePath,
-        headless: chrome.headless,
-      };
+  const options =
+    process.env.VERCEL_ENV === 'development'
+      ? {
+          args: [],
+          executablePath:
+            '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+          headless: true,
+        }
+      : {
+          args: chrome.args,
+          executablePath: await chrome.executablePath,
+          headless: chrome.headless,
+        };
 
   const browser = await core.launch(options);
 

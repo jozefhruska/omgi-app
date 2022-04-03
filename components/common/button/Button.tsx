@@ -23,6 +23,7 @@ type ButtonAsButtonProps = {
 type ButtonCommonProps = {
   kind?: ButtonKind;
   children: string;
+  onClick?: () => void;
 };
 
 type ButtonProps = ButtonCommonProps &
