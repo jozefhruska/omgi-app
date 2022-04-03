@@ -1,10 +1,10 @@
 import { Fragment, ReactNode } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+import { CheckCircleIcon } from '@heroicons/react/solid';
+import clsx from 'clsx';
 
 import styles from './TemplateRadioGroup.module.css';
-import clsx from 'clsx';
-import { CheckCircleIcon } from '@heroicons/react/solid';
 
 type TemplateRadioGroupProps = {
   label: string;
