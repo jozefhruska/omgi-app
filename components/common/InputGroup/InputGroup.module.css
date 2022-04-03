@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  @apply mb-2.5 text-sm font-semibold text-gray-700;
+
+  display: block;
+}
+
+.error {
+  @apply mt-2.5 text-sm text-red-600;
+
+  display: block;
+}
