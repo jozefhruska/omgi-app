@@ -20,7 +20,7 @@ const Homepage: NextPage = () => (
       />
       <meta
         name="description"
-        content="Generate custom Open Graph images in a matter of seconds. Choose the template you like and generate the OG image with a simple HTTP GET request."
+        content="Choose the template you like and generate the OG image with a simple HTTP GET request."
       />
 
       <meta
@@ -30,7 +30,29 @@ const Homepage: NextPage = () => (
       <meta
         property="og:image"
         content={getBasicTemplateUrl({
-          heading: 'Oh My Graph Image',
+          heading: 'Oh My Graph Image ',
+          description:
+            'Generate custom Open Graph images in a matter of seconds. Choose the template you like and generate the OG image with a simple HTTP GET request.',
+          badge: 'open graph image generator',
+        })}
+      />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:domain" content="omgi.vercel.app" />
+      <meta property="twitter:url" content="https://omgi.vercel.app/" />
+
+      <meta
+        name="twitter:title"
+        content="OMGI: Generate custom Open Graph images in a matter of seconds"
+      />
+      <meta
+        name="twitter:description"
+        content="Choose the template you like and generate the OG image with a simple HTTP GET request."
+      />
+      <meta
+        name="twitter:image"
+        content={getBasicTemplateUrl({
+          heading: 'Oh My Graph Image ',
           description:
             'Generate custom Open Graph images in a matter of seconds. Choose the template you like and generate the OG image with a simple HTTP GET request.',
           badge: 'open graph image generator',
