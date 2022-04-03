@@ -1,0 +1,37 @@
+.wrapper {
+  @apply bg-white;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4;
+
+  @screen md {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.socialsLinks {
+  @apply rounded-lg text-gray-400;
+
+  &:hover {
+    @apply text-gray-500;
+  }
+
+  &:focus {
+    @apply outline-none ring-2 ring-green-400 ring-offset-2;
+  }
+}
+
+.authorLink {
+  @apply rounded-lg;
+
+  &:hover {
+    @apply text-gray-500;
+  }
+
+  &:focus {
+    @apply outline-none ring-2 ring-green-400 ring-offset-2;
+  }
+}
