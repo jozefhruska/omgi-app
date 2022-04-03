@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import Image from 'next/image';
 
@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 
 type TemplateRadioGroupProps = {
+  label: string;
   value: string;
   onChange: (value: string) => void;
   disabled?: boolean;
@@ -14,6 +15,7 @@ type TemplateRadioGroupProps = {
 };
 
 export const TemplateRadioGroup = ({
+  label,
   value,
   onChange,
   disabled = false,
@@ -25,7 +27,9 @@ export const TemplateRadioGroup = ({
     disabled={disabled}
     className={styles.group}
   >
-    {children}
+    <RadioGroup.Label className={styles.label}>{label}</RadioGroup.Label>
+
+    <div className={styles.options}>{children}</div>
   </RadioGroup>
 );
 
@@ -42,7 +46,7 @@ const TemplateRadioGroupOption = ({
   description,
   image,
 }: TemplateRadioGroupOptionProps) => (
-  <RadioGroup.Option value={value}>
+  <RadioGroup.Option as={Fragment} value={value}>
     {({ active, checked }) => (
       <div
         className={clsx(styles.option, {
@@ -69,15 +73,4 @@ const TemplateRadioGroupOption = ({
   </RadioGroup.Option>
 );
 
-type TemplateRadioGroupLabelProps = {
-  children: ReactNode;
-};
-
-const TemplateRadioGroupLabel = ({
-  children,
-}: TemplateRadioGroupLabelProps) => (
-  <RadioGroup.Label>{children}</RadioGroup.Label>
-);
-
 TemplateRadioGroup.Option = TemplateRadioGroupOption;
-TemplateRadioGroup.Label = TemplateRadioGroupLabel;

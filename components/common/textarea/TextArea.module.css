@@ -1,6 +1,8 @@
 .main {
   @apply w-full rounded-md px-4 py-2.5 outline outline-1 outline-gray-300;
 
+  min-height: 6rem;
+
   &:disabled {
     cursor: not-allowed;
   }

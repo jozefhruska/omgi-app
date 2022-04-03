@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 import clsx from 'clsx';
 
 import styles from './Input.module.css';
@@ -8,25 +8,25 @@ type InputProps = { hasError?: boolean } & Omit<
   'children'
 >;
 
-export const Input = ({
-  hasError = false,
-  className,
-  ...props
-}: InputProps) => {
-  const { type, name, id, placeholder, ...rest } = props;
+// eslint-disable-next-line react/display-name
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ hasError = false, className, ...props }, ref) => {
+    const { type, name, id, placeholder, ...rest } = props;
 
-  return (
-    <input
-      {...rest}
-      type={type}
-      name={name}
-      id={id}
-      placeholder={placeholder}
-      className={clsx(
-        styles.main,
-        { [styles.invalid]: hasError },
-        className
-      )}
-    />
-  );
-};
+    return (
+      <input
+        {...rest}
+        ref={ref}
+        type={type}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        className={clsx(
+          styles.main,
+          { [styles.invalid]: hasError },
+          className
+        )}
+      />
+    );
+  }
+);

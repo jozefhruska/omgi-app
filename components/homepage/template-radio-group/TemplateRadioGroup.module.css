@@ -1,7 +1,11 @@
 .group {
-  @apply w-full grid-cols-3 gap-4;
+  @apply w-full;
 
-  display: grid;
+  & .options {
+    @apply grid-cols-3 gap-4;
+
+    display: grid;
+  }
 
   & .option {
     @apply cursor-pointer rounded-lg border bg-white p-4 shadow-sm;
@@ -13,6 +17,8 @@
 
     &.active {
       @apply border-green-500 ring-2 ring-green-500;
+
+      outline: none;
     }
 
     &.checked {
@@ -43,5 +49,11 @@
       display: block;
       position: relative;
     }
+  }
+
+  & .label {
+    @apply mb-2.5 text-sm font-semibold text-gray-700;
+
+    display: block;
   }
 }
