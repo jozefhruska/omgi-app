@@ -11,6 +11,10 @@ import { TextArea } from '../../common/textarea/TextArea';
 import { DEPLOYMENT_URL } from '../../../helpers/constants';
 import { Button } from '../../common/button/Button';
 import { CopyButton } from '../../common/copy-button/CopyButton';
+import { basicTemplateValidationSchema } from '../../../templates/basic';
+import { articleTemplateValidationSchema } from '../../../templates/article';
+
+export const FORM_WRAPPER_ID = 'PreviewForm-wrapper';
 
 const REQUIRED_FIELD_MESSAGE = 'This field is required.';
 
@@ -67,10 +71,24 @@ export const PreviewForm: React.VFC = () => {
     });
 
   const onSubmit = handleSubmit(async ({ template, ...values }) => {
-    // @ts-ignore
-    const params = new URLSearchParams(values);
+    let params;
 
-    const url = DEPLOYMENT_URL + `/api/generate/${template}?` + params;
+    switch (template) {
+      case 'basic': {
+        params = basicTemplateValidationSchema.parse(values);
+        break;
+      }
+
+      case 'article': {
+        params = articleTemplateValidationSchema.parse(values);
+        break;
+      }
+    }
+
+    const url =
+      DEPLOYMENT_URL +
+      `/api/generate/${template}?` +
+      new URLSearchParams(params);
 
     await fetch(url)
       .then(() => {
@@ -84,7 +102,7 @@ export const PreviewForm: React.VFC = () => {
   const template = watch('template');
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id={FORM_WRAPPER_ID}>
       <form onSubmit={onSubmit} className={styles.form}>
         <div className={styles.formSection}>
           <h2 className={styles.sectionHeading}>

@@ -1,10 +1,48 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { HeroSection } from '../components/homepage/hero-section/HeroSection';
 import { PreviewForm } from '../components/homepage/preview-form/PreviewForm';
 import { Footer } from '../components/common/footer/Footer';
+import { getBasicTemplateUrl } from 'omgi';
+import Script from 'next/script';
 
 const Homepage: NextPage = () => (
   <>
+    <Head>
+      <title>Effortless Open Graph image generator | OMGI</title>
+      <meta
+        name="viewport"
+        content="initial-scale=1.0, width=device-width"
+      />
+      <meta
+        name="keywords"
+        content="OMGI, Open Graph protocol, Open Graph image, OG image, generator, custom"
+      />
+      <meta
+        name="description"
+        content="Generate custom Open Graph images in a matter of seconds. Choose the template you like and generate the OG image with a simple HTTP GET request."
+      />
+
+      <meta
+        property="og:title"
+        content="OMGI: Generate custom Open Graph images in a matter of seconds"
+      />
+      <meta
+        property="og:image"
+        content={getBasicTemplateUrl({
+          heading: 'Oh My Graph Image',
+          description:
+            'Generate custom Open Graph images in a matter of seconds. Choose the template you like and generate the OG image with a simple HTTP GET request.',
+          badge: 'open graph image generator',
+        })}
+      />
+
+      <meta
+        name="google-site-verification"
+        content="1dFRF0vAiUVQtwOvBc8vVHoqsGR06wynmph-bKvmdnI"
+      />
+    </Head>
+
     <main>
       <HeroSection />
 
@@ -16,6 +54,16 @@ const Homepage: NextPage = () => (
     <div className="mt-16 mb-8 sm:mt-24">
       <Footer />
     </div>
+
+    <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+    <noscript>
+      {/* eslint-disable @next/next/no-img-element */}
+      <img
+        src="https://queue.simpleanalyticscdn.com/noscript.gif"
+        alt=""
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
   </>
 );
 
