@@ -1,6 +1,7 @@
 export enum TemplateKey {
   Article = 'article',
   Basic = 'basic',
+  HireDev = 'hire-dev',
 }
 
 type WithTemplateWrapperProps = {
