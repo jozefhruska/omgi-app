@@ -1,15 +1,6 @@
 import { truncate } from '../../helpers/text';
 import { HireDevTemplateParams } from './index';
 
-const SALARY_TYPE_MAP: Record<
-  HireDevTemplateParams['salaryType'],
-  string
-> = {
-  weekly: 'week',
-  monthly: 'month',
-  yearly: 'year',
-};
-
 export const HireDevTemplate = ({
   employmentType,
   jobOpeningName,
@@ -19,7 +10,7 @@ export const HireDevTemplate = ({
   salaryCurrency,
   salaryEnd,
   salaryStart,
-  salaryType,
+  salaryPeriod,
 }: HireDevTemplateParams) => (
   <div className="wrapper">
     <svg
@@ -187,7 +178,7 @@ export const HireDevTemplate = ({
       {!salaryCurrency ||
       !salaryStart ||
       !salaryEnd ||
-      !salaryType ? null : (
+      !salaryPeriod ? null : (
         <div className="salary">
           {truncate({
             content: salaryCurrency,
@@ -206,11 +197,7 @@ export const HireDevTemplate = ({
             content: salaryEnd,
             length: 8,
           })}{' '}
-          {!!SALARY_TYPE_MAP[salaryType] && (
-            <span className="salaryType">
-              /{SALARY_TYPE_MAP[salaryType]}
-            </span>
-          )}
+          <span className="salaryType">/{salaryPeriod}</span>
         </div>
       )}
     </div>
