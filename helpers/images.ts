@@ -30,7 +30,7 @@ const getPage = async (): Promise<core.Page> => {
 export const getScreenshot = async (html: string) => {
   const page = await getPage();
 
-  await page.setViewport({ width: 1200, height: 600 });
+  await page.setViewport({ width: 1200, height: 630 });
 
   // Set the content to our rendered HTML
   await page.setContent(html, { waitUntil: 'domcontentloaded' });
@@ -60,6 +60,6 @@ export const getScreenshot = async (html: string) => {
   return await page.screenshot({
     type: 'jpeg',
     fullPage: false,
-    quality: 85,
+    quality: 100,
   });
 };

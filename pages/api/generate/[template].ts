@@ -4,6 +4,7 @@ import { getScreenshot } from '../../../helpers/images';
 import { TemplateKey } from '../../../templates';
 import { getArticleTemplateHtml } from '../../../templates/article';
 import { getBasicTemplateHtml } from '../../../templates/basic';
+import { getHireDevTemplateHtml } from '../../../templates/hire-dev';
 
 const GenerateApiHandler: NextApiHandler = async (req, res) => {
   try {
@@ -21,6 +22,11 @@ const GenerateApiHandler: NextApiHandler = async (req, res) => {
 
       case TemplateKey.Basic: {
         html = getBasicTemplateHtml(req.query);
+        break;
+      }
+
+      case TemplateKey.HireDev: {
+        html = getHireDevTemplateHtml(req.query);
         break;
       }
 
