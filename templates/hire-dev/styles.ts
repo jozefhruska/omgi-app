@@ -53,6 +53,7 @@ export const hireDevTemplateStyles = `
       display: inline-block;
       width: 148px;
       height: 148px;
+      border-radius: 50%;
     }
     
     .infoWrapper {

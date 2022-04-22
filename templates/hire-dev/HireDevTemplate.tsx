@@ -183,19 +183,23 @@ export const HireDevTemplate = ({
           {truncate({
             content: salaryCurrency,
             length: 3,
+            dots: false,
           })}{' '}
           {truncate({
             content: salaryStart,
-            length: 8,
+            length: 6,
+            dots: false,
           })}{' '}
           -{' '}
           {truncate({
             content: salaryCurrency,
             length: 3,
+            dots: false,
           })}{' '}
           {truncate({
             content: salaryEnd,
-            length: 8,
+            length: 6,
+            dots: false,
           })}{' '}
           <span className="salaryType">/{salaryPeriod}</span>
         </div>
