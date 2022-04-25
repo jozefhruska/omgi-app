@@ -23,13 +23,6 @@ export const Footer: React.VFC = () => (
             className={styles.authorLink}
           >
             Jozef Hruška
-          </a>{' '}
-          and{' '}
-          <a
-            href="https://github.com/alesed"
-            className={styles.authorLink}
-          >
-            Aleš Sedláček
           </a>
           .
         </p>
