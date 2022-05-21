@@ -1,10 +1,7 @@
 import { truncate } from '../../helpers/text';
-import { HireDevTemplateParams } from './index';
+import { HireDevJobTemplateParams } from './index';
 
-/**
- * @deprecated Use HireDevJobTemplate or HireDevOrgTemplate instead.
- */
-export const HireDevTemplate = ({
+export const HireDevJobTemplate = ({
   employmentType,
   jobOpeningName,
   organizationAvatarUrl,
@@ -14,7 +11,7 @@ export const HireDevTemplate = ({
   salaryEnd,
   salaryStart,
   salaryPeriod,
-}: HireDevTemplateParams) => (
+}: HireDevJobTemplateParams) => (
   <div className="wrapper">
     <svg
       width="37"

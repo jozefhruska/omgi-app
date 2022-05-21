@@ -1,20 +1,12 @@
 import { truncate } from '../../helpers/text';
-import { HireDevTemplateParams } from './index';
+import { HireDevOrgTemplateParams } from './index';
 
-/**
- * @deprecated Use HireDevJobTemplate or HireDevOrgTemplate instead.
- */
-export const HireDevTemplate = ({
-  employmentType,
-  jobOpeningName,
+export const HireDevOrgTemplate = ({
   organizationAvatarUrl,
   organizationName,
-  presence,
-  salaryCurrency,
-  salaryEnd,
-  salaryStart,
-  salaryPeriod,
-}: HireDevTemplateParams) => (
+  location,
+  activePositionsCount,
+}: HireDevOrgTemplateParams) => (
   <div className="wrapper">
     <svg
       width="37"
@@ -100,23 +92,16 @@ export const HireDevTemplate = ({
         />
       </div>
       <div className="infoWrapper">
-        <div className="organizationName">
-          {' '}
+        <div className="highlight">Organization</div>
+        <h1>
           {truncate({
             content: organizationName,
-            length: 42,
-          })}
-        </div>
-        <h1>
-          {' '}
-          {truncate({
-            content: jobOpeningName,
             length: 46,
           })}
         </h1>
 
         <div>
-          {!!employmentType && (
+          {!!location && (
             <div className="feature">
               <svg
                 width="40"
@@ -127,7 +112,14 @@ export const HireDevTemplate = ({
                 className="featureIcon"
               >
                 <path
-                  d="M20 13.3333V20L25 25M35 20C35 28.2843 28.2843 35 20 35C11.7157 35 5 28.2843 5 20C5 11.7157 11.7157 5 20 5C28.2843 5 35 11.7157 35 20Z"
+                  d="M29.4284 27.7614C27.6305 29.5594 23.5727 33.6171 21.4137 35.7761C20.6327 36.5572 19.3688 36.558 18.5878 35.777C16.4642 33.6533 12.4936 29.6828 10.5722 27.7614C5.36524 22.5544 5.36524 14.1122 10.5722 8.90524C15.7792 3.69825 24.2214 3.69825 29.4284 8.90524C34.6354 14.1122 34.6354 22.5544 29.4284 27.7614Z"
+                  stroke="#60A5FA"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M25.0003 18.3333C25.0003 21.0948 22.7617 23.3333 20.0003 23.3333C17.2389 23.3333 15.0003 21.0948 15.0003 18.3333C15.0003 15.5719 17.2389 13.3333 20.0003 13.3333C22.7617 13.3333 25.0003 15.5719 25.0003 18.3333Z"
                   stroke="#60A5FA"
                   strokeWidth="3"
                   strokeLinecap="round"
@@ -137,14 +129,14 @@ export const HireDevTemplate = ({
 
               <div className="featureValue">
                 {truncate({
-                  content: employmentType,
+                  content: location,
                   length: 52,
                 })}
               </div>
             </div>
           )}
 
-          {!!presence && (
+          {!!activePositionsCount && (
             <div className="feature">
               <svg
                 width="40"
@@ -164,10 +156,11 @@ export const HireDevTemplate = ({
               </svg>
 
               <div className="featureValue">
-                {truncate({
-                  content: presence,
-                  length: 52,
-                })}
+                {activePositionsCount === '0'
+                  ? 'No active positions'
+                  : activePositionsCount === '1'
+                  ? `${activePositionsCount} active position`
+                  : `${activePositionsCount} active positions`}
               </div>
             </div>
           )}
@@ -176,36 +169,9 @@ export const HireDevTemplate = ({
     </div>
 
     <div className="bottomWrapper">
-      <div className="applyNow">Apply now</div>
-
-      {!salaryCurrency ||
-      !salaryStart ||
-      !salaryEnd ||
-      !salaryPeriod ? null : (
-        <div className="salary">
-          {truncate({
-            content: salaryCurrency,
-            length: 3,
-            dots: false,
-          })}{' '}
-          {truncate({
-            content: salaryStart,
-            length: 6,
-            dots: false,
-          })}{' '}
-          -{' '}
-          {truncate({
-            content: salaryCurrency,
-            length: 3,
-            dots: false,
-          })}{' '}
-          {truncate({
-            content: salaryEnd,
-            length: 6,
-            dots: false,
-          })}{' '}
-          <span className="salaryType">/{salaryPeriod}</span>
-        </div>
+      <div className="applyNow">See job openings</div>
+      {!!activePositionsCount && activePositionsCount !== '0' && (
+        <div className="salary">We are hiring!</div>
       )}
     </div>
   </div>
