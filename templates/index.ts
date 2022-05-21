@@ -2,6 +2,8 @@ export enum TemplateKey {
   Article = 'article',
   Basic = 'basic',
   HireDev = 'hire-dev',
+  HireDevJob = 'hire-dev-job',
+  HireDevOrg = 'hire-dev-org',
 }
 
 type WithTemplateWrapperProps = {

@@ -5,6 +5,8 @@ import { TemplateKey } from '../../../templates';
 import { getArticleTemplateHtml } from '../../../templates/article';
 import { getBasicTemplateHtml } from '../../../templates/basic';
 import { getHireDevTemplateHtml } from '../../../templates/hire-dev';
+import { getHireDevJobTemplateHtml } from '../../../templates/hire-dev-job';
+import { getHireDevOrgTemplateHtml } from '../../../templates/hire-dev-org';
 
 const GenerateApiHandler: NextApiHandler = async (req, res) => {
   try {
@@ -27,6 +29,16 @@ const GenerateApiHandler: NextApiHandler = async (req, res) => {
 
       case TemplateKey.HireDev: {
         html = getHireDevTemplateHtml(req.query);
+        break;
+      }
+
+      case TemplateKey.HireDevJob: {
+        html = getHireDevJobTemplateHtml(req.query);
+        break;
+      }
+
+      case TemplateKey.HireDevOrg: {
+        html = getHireDevOrgTemplateHtml(req.query);
         break;
       }
 
